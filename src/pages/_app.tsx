@@ -4,7 +4,7 @@ import '../../main.css'
 import {CurrentUserProvider } from '../utils/context/CurrentUserContext'
 
 
-// Default way to get a logged user
+
 export const loggedUserId = getLoggedUserId()
 
 function MyApp({ Component, pageProps }: AppProps) {

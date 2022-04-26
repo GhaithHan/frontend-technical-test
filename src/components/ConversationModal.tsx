@@ -1,19 +1,16 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
 import { User } from '../types/user';
 import { swrFetcher } from '../api/swrFetcher';
 
 
 const ConversationModal = ({ openNavBar, user, users }) => {
+
   const router = useRouter();
   const [filter, setFilter] = useState('');
   const refreshData = () => {
     router.replace(router.asPath);
   }
-
-  /**
-   * Creating a conversation and updating the list of conversations on the homepage
-   */
 
   const createConversation = async (contact: User) => {
 
@@ -25,23 +22,6 @@ const ConversationModal = ({ openNavBar, user, users }) => {
       lastMessageTimeStamp: 0,
     };
     swrFetcher.conversation(conversationCreated, user.id)
-    // const requestOptions = {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(body),
-    // };
-    // try {
-    //   const response = await fetch(url, requestOptions);
-    //   const data = await response.json();
-    //   updateConversations(
-    //     `http://localhost:3005/conversations/${user.id}`
-    //   );
-    //   console.log(data);
-    // } catch (e) {
-      //   console.log(e);
-      // } finally {
-        //   handleModal();
-        // }
         openNavBar()
         refreshData();
         swrFetcher.conversations(user.id)
@@ -50,7 +30,7 @@ const ConversationModal = ({ openNavBar, user, users }) => {
 
   return (
     <>
-        <p className="text-white">Nouvelle conversation</p>
+        <p className="text-white">new conv</p>
         <input
           type='text'
           placeholder='Saissez un nom'

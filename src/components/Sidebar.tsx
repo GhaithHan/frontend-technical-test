@@ -23,7 +23,6 @@ const Sidebar = ({users, user}) => {
   const { data: conversations, isValidating } = useSWR(user.id ? [endpoints.GET_ALL_CONVERSATIONS, user.id] : null, () =>
     swrFetcher.conversations(user.id)
   );
-  console.log(conversations);
 
   return (
     <div className="flex-[0.45] scrollbar-hide border-r-2 border-r-solid border-[#f5f5f5] h-full min-w-[300px] max-w-[350px] overflow-y-scroll">
@@ -49,7 +48,7 @@ const Sidebar = ({users, user}) => {
           {navbar ? 'choose a person' : 'Start a new Conversation'}
         </Button>
         <div className={classNames(
-          'hidden md:block transition-all min-w-[350px] duration-500 z-[90] text-white fixed bg-black h-full',
+          'hidden md:block transition-all min-w-[350px] duration-500 z-[90] text-black fixed bg-white h-full',
           {
             'md:translate-y-[100%] transition-none': !navbar,
           }
